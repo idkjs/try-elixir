@@ -1,9 +1,9 @@
-defmodule Project.MixProject do
+defmodule Blog.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :project,
+      app: :blog,
       version: "0.1.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule Project.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Project.Application, []},
+      mod: {Blog.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -38,10 +38,14 @@ defmodule Project.MixProject do
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
+      {:phoenix_html, "~> 2.11"},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:absinthe, "~> 1.4"}
+      {:absinthe, "~> 1.4"},
+      {:absinthe_plug, "~> 1.4"},
+      {:poison, "~> 3.1"}, 
     ]
   end
 

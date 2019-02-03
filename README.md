@@ -1,9 +1,10 @@
-# Project
+# Blog
 
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.setup`
+  * Install Node.js dependencies with `cd assets && npm install`
   * Start Phoenix endpoint with `mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
@@ -18,7 +19,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
 
-## 使用コマンド（メモ）
-- docker-compose run web mix phx.new . --app project --no-html --no-webpack
+## メモ
 - `docker-compose run web bash -c "mix deps.compile && mix ecto.create && mix ecto.migrate"`
-- `docker-compose run web bash -c "mix deps.get"`
+- `docker-compose run web bash -c "mix deps.get`
+- `docker-compose run web mix phx.new . --app blog --no-html --no-webpack`
