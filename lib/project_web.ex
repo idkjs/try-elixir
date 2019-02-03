@@ -1,12 +1,12 @@
-defmodule MyAppWeb do
+defmodule ProjectWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use MyAppWeb, :controller
-      use MyAppWeb, :view
+      use ProjectWeb, :controller
+      use ProjectWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,27 +19,26 @@ defmodule MyAppWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: MyAppWeb
+      use Phoenix.Controller, namespace: ProjectWeb
+
       import Plug.Conn
-      import MyAppWeb.Router.Helpers
-      import MyAppWeb.Gettext
+      import ProjectWeb.Gettext
+      alias ProjectWeb.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/my_app_web/templates",
-                        namespace: MyAppWeb
+      use Phoenix.View,
+        root: "lib/project_web/templates",
+        namespace: ProjectWeb
 
       # Import convenience functions from controllers
-      import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
+      import Phoenix.Controller, only: [get_flash: 1, get_flash: 2, view_module: 1]
 
-      # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
-
-      import MyAppWeb.Router.Helpers
-      import MyAppWeb.ErrorHelpers
-      import MyAppWeb.Gettext
+      import ProjectWeb.ErrorHelpers
+      import ProjectWeb.Gettext
+      alias ProjectWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -54,7 +53,7 @@ defmodule MyAppWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import MyAppWeb.Gettext
+      import ProjectWeb.Gettext
     end
   end
 

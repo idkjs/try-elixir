@@ -3,25 +3,28 @@
 #
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
-use Mix.Config
 
 # General application configuration
-config :my_app,
-  ecto_repos: [MyApp.Repo]
+use Mix.Config
+
+config :project,
+  ecto_repos: [Project.Repo]
 
 # Configures the endpoint
-config :my_app, MyAppWeb.Endpoint,
+config :project, ProjectWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "dDpRzKzHsUQ2NsC/xLSXx93AYbCYfuLAM2AwIDIYYo2AANcYba6p6meMiP6KatVW",
-  render_errors: [view: MyAppWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: MyApp.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  secret_key_base: "D647GZGrBMz4X790JqBq/K54arRgtkeoa2vxeY6k3v8WkgpZI6KKcArbK4Ilwd1z",
+  render_errors: [view: ProjectWeb.ErrorView, accepts: ~w(json)],
+  pubsub: [name: Project.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
-  metadata: [:user_id]
+  metadata: [:request_id]
+
+# Use Jason for JSON parsing in Phoenix
+config :phoenix, :json_library, Jason
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"

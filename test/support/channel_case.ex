@@ -1,11 +1,11 @@
-defmodule MyAppWeb.ChannelCase do
+defmodule ProjectWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
 
   Such tests rely on `Phoenix.ChannelTest` and also
   import other functionality to make it easier
-  to build common datastructures and query the data layer.
+  to build common data structures and query the data layer.
 
   Finally, if the test case interacts with the database,
   it cannot be async. For this reason, every test runs
@@ -21,17 +21,17 @@ defmodule MyAppWeb.ChannelCase do
       use Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint MyAppWeb.Endpoint
+      @endpoint ProjectWeb.Endpoint
     end
   end
-
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MyApp.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Project.Repo)
+
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(MyApp.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Project.Repo, {:shared, self()})
     end
+
     :ok
   end
-
 end

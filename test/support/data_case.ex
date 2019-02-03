@@ -1,4 +1,4 @@
-defmodule MyApp.DataCase do
+defmodule Project.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -16,27 +16,27 @@ defmodule MyApp.DataCase do
 
   using do
     quote do
-      alias MyApp.Repo
+      alias Project.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import MyApp.DataCase
+      import Project.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(MyApp.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Project.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(MyApp.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(Project.Repo, {:shared, self()})
     end
 
     :ok
   end
 
   @doc """
-  A helper that transform changeset errors to a map of messages.
+  A helper that transforms changeset errors into a map of messages.
 
       assert {:error, changeset} = Accounts.create_user(%{password: "short"})
       assert "password is too short" in errors_on(changeset).password

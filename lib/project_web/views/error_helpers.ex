@@ -1,18 +1,7 @@
-defmodule MyAppWeb.ErrorHelpers do
+defmodule ProjectWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
-
-  use Phoenix.HTML
-
-  @doc """
-  Generates tag for inlined form input errors.
-  """
-  def error_tag(form, field) do
-    Enum.map(Keyword.get_values(form.errors, field), fn (error) ->
-      content_tag :span, translate_error(error), class: "help-block"
-    end)
-  end
 
   @doc """
   Translates an error message using gettext.
@@ -22,10 +11,10 @@ defmodule MyAppWeb.ErrorHelpers do
     # to translate as a static argument:
     #
     #     # Translate "is invalid" in the "errors" domain
-    #     dgettext "errors", "is invalid"
+    #     dgettext("errors", "is invalid")
     #
     #     # Translate the number of files with plural rules
-    #     dngettext "errors", "1 file", "%{count} files", count
+    #     dngettext("errors", "1 file", "%{count} files", count)
     #
     # Because the error messages we show in our forms and APIs
     # are defined inside Ecto, we need to translate them dynamically.
@@ -36,9 +25,9 @@ defmodule MyAppWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(MyAppWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(ProjectWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(MyAppWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(ProjectWeb.Gettext, "errors", msg, opts)
     end
   end
 end
